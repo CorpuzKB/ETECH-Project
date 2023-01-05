@@ -18,7 +18,7 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
           size: 3,  
         },
         marker: { 
-          size: 6,
+          size: 9,
           color: 'rgb(219, 64, 82)'
   }};
   let plot_predict = {
@@ -34,8 +34,8 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
             size: 3,  
           },
           marker: { 
-            size: 6,
-            color: '(25,135,84)'
+            size: 9,
+            color: 'rgb(25,135,84)'
   }};
       
   let CI = {

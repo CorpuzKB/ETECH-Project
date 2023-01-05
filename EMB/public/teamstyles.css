@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'Montserrat', sans-serif;
-    src: url(https://fonts.cdnfonts.com/css/montserrat);
+    src: url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
   }
 
 body{
-    font-family: 'Montserrat' !important;
+    font-family: 'Montserrat';
     padding-bottom: 50px;
     font-weight: bold;
   }
@@ -14,21 +14,21 @@ body{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border-radius: 50%;
-    margin-top: 33px;
-    border: 15px solid #9282F4;
+    border: 15px solid #2AC35E;
     width: 250px;
     height: 250px;
+    border-radius: 50%;
+    margin-top: 33px;
 }
 
 h1, h2, h5{
+    color: #1E6C39;
     font-weight: 600;
-    color: #4B36C8;
 }
 
 h1{
     text-align: center;
-    margin-bottom: 96px;
+    margin-bottom: 50px;
     margin-top: 50px;
     font-size: 50px;
 }
@@ -36,6 +36,7 @@ h1{
 h2{
     font-weight: bold;
 }
+
 h5{
     font-size: 18px;
 }
@@ -73,9 +74,13 @@ h5{
     backface-visibility: hidden;
 }
 
+
+.row{
+    margin-top: 50px;
+}
 .card-front, .card-back{
     position: absolute;
-    background: linear-gradient(135deg, hsla(0, 0%, 100%, 1) 0%, hsla(248, 83%, 86%, 1) 100%);
+    background: linear-gradient(135deg, hsla(0, 0%, 100%, 1) 0%, hsla(141, 65%, 66%, 1) 100%);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.25);
@@ -83,7 +88,7 @@ h5{
 
 .card-back p{
     margin-top: 15px;
-    color: #4B36C8;
+    color: #1E6C38;
     text-align: center;
     vertical-align: middle;
     font-size: x-large;
@@ -120,13 +125,13 @@ h5{
 
 .navbar-nav a{
     font-size: 30px;
-    color: #4B36C8;
+    color: #1E6C38;
     transition: all 0.3s ease 0s;
 }
 
 .navbar-nav a:hover{
     transform: translateY(-3px);
-    color: #9282F4;
+    color: #2AC35E;
 }
 
 
@@ -136,9 +141,14 @@ h5{
     text-decoration-thickness: 5px;
 } 
 
-@media screen and (max-width: 1000px) {
-    .col-md-4{
+
+/*responsiveness*/
+@media only screen and (max-width: 995px){
+    .col-md-5{
         width: 100%;
     }
-}
 
+   .space{
+    margin-top: 50px;
+   }
+}
