@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'Montserrat', sans-serif;
-  src: url(fonts/Montserrat-Regular.otf);
+  src: url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
 }
 
 
 body{
-  font-family: 'Montserrat' !important;
+  font-family: 'Montserrat';
   font-style: normal;
   width: 85%; /*if the browser gets too small, this makes sure there is still space*/
   margin: 0 auto;
@@ -16,13 +16,13 @@ body{
 /*------------Navbar-------------*/
 .navbar-nav a{
   font-size: 30px;
-  color: #4B36C8;
+  color: #1E6C38;
   transition: all 0.3s ease 0s;
 }
 
 .navbar-nav a:hover{
   transform: translateY(-3px);
-  color: #9282F4;
+  color: #2AC35E;
 }
 
 .current{
@@ -33,7 +33,7 @@ body{
 /*------------Greetings Card-------------*/
 .greetings{
   position: relative;
-  background: #8371F3;
+  background: #2FA156;
   box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   padding-left: 26px;
@@ -67,25 +67,26 @@ body{
 /*------------Date-------------*/
 .date-card{
   padding-top: 50px;
-  color: #8371F3;
+  color: #2AC35E;
   font-size: 25px;
 }
 
 .date-card h1{
-  color: #4B36C8;
+  color: #1E6C39;
   font-size: 50px;
   line-height: 50px;
   font-weight: 600;
 }
 
-.girl{
+.shroom{
   position: relative;
-  top: -150px;
-  left: 100px
+  top: -180px;
+  left: 140px;
 }
 
 .firstrow{
   height: 250px;
+  margin-bottom: 30px;
 }
 
 .time{
@@ -99,14 +100,15 @@ body{
   width: 400px;
   height: 249px;
   color: #fff;
-  background: #C8C0F9;
+  background: #6FE096;
   box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  padding-left: 13px;
+  padding-left: 35px;
   padding-right: 13px;
-  padding-top: 15px;
   margin-right: 15px;
+  padding-top: 15px;
 }
+
 
 .gaugerow{
   margin-top: 50px;
@@ -114,7 +116,7 @@ body{
 }
 .gauges h3{
   font-weight: 600;
-  margin-bottom: 0;
+  margin-bottom: 10px;
 }
 
 .hcont, .tcont, .wcont{
@@ -124,22 +126,23 @@ body{
 #hlogo{
   position: relative;
   margin-left: 30px;
-  margin-top: 15px;
+  margin-top: 20px;
 }
 
 #tlogo{
   position: relative;
   margin-top: 15px;
-  margin-left: 40px;
+  margin-left: 35px;
 }
 
 #wlogo{
   position: relative;
-  margin-left: 20px;
+  margin-top: 20px;
+  margin-left: 40px;
   margin-bottom: 50px;
 }
 .gauges :hover{
-  color: #4B36C8;
+  color: #1E6C38;
   transition: 0.5s;
 }
 
@@ -158,6 +161,7 @@ body{
   top: 0;
   display: inline-block;
   color: rgb(47, 227, 255);;
+  font-family: monospace;
   font-size: 0.8em;
   padding: 5px 10px;
   border-top-right-radius: 12px;
@@ -173,7 +177,7 @@ body{
   fill: rgba(0,0,0,0);
 }
 .gauge-container > .gauge .value-text {
-  fill: #4B36C8;
+  fill: #1E6C38;
   font-weight: bold;
   font-size: 30px
 }
@@ -259,12 +263,15 @@ body{
     height: 150px;
   }
 
-  #hlogo, #tlogo, #wlogo{
-    width: 120px;
-    height: 120px;
+  #hlogo, #tlogo{
+    width: 90px;
+    height: 90px;
+    margin-top: 20px;
   }
   #wlogo{
-    margin-top: 10px;
+    margin-top: 20px;
+    width: 65px;
+    height: 90px;
   }
 }
 
@@ -272,14 +279,14 @@ body{
   .gcont{
     margin-bottom: 35px;
     width: 350px;
-    height: 200px;     /*eeeeeeeeeeeeeeeeeeeeeee*/
+    height: 220px;     /*eeeeeeeeeeeeeeeeeeeeeee*/
   }
 
-  .girl{
-    width: 274px;
-    height: 180px;
-    top: -100px;
-    left: 75px;
+  .shroom{
+    width: 199px;
+    height: 223px;
+    top: -160px;
+    left: 150px;
   }  
 }
 
@@ -291,7 +298,7 @@ body{
   .gcont{
     margin-bottom: 35px;
     width: 330px;
-    height: 180px;     /*eeeeeeeeeeeeeeeeeeeeeee*/
+    height: 200px;     /*eeeeeeeeeeeeeeeeeeeeeee*/
   }
 
   .gauge-container{
@@ -299,13 +306,6 @@ body{
     height: 130px;
   }
 
-  #hlogo, #tlogo, #wlogo{
-    width: 100px;
-    height: 100px;
-  }
-  #wlogo{
-    margin-top: 10px;
-  }
 }
 
 @media only screen and (max-width: 1255px) {
@@ -318,8 +318,9 @@ body{
 
   .gcont{
     margin-bottom: 35px;
+    padding-left: 15px;
     width: 310px;
-    height: 180px;     /*eeeeeeeeeeeeeeeeeeeeeee*/
+    height: 200px;     /*eeeeeeeeeeeeeeeeeeeeeee*/
   }
 
   .gauge-container{
@@ -327,14 +328,8 @@ body{
     height: 110px;
   }
 
-  #hlogo, #tlogo, #wlogo{
-    width: 100px;
-    height: 100px;
-  }
 
-  #wlogo{
-    margin-top: 10px;
-  }
+
 }
 
 @media only screen and (max-width: 1255px) {
@@ -352,11 +347,15 @@ body{
     font-size: 40px;
   }
 
-  .girl{
-    width: 214px;
-    height: 150px;
-    top: -90px;
-    left: 40px;
+  .row{
+    margin-top: 0px;
+  }
+
+  .shroom{
+    width: 179px;
+    height: 193px;
+    top: -150px;
+    left: 120px;
   }  
 
   .greetings h1{
@@ -373,11 +372,24 @@ body{
   .gcont{
     width: 270px;
     height: 160px;
+    padding-left: 10px;
   }
-  #hlogo, #tlogo, #wlogo{
+
+  .gcont h3{
+    font-size: 20px;
+  }
+
+  #hlogo, #tlogo{
     width: 80px;
     height: 80px;
-    margin-left: 15px;
+    margin-top: 10px;
+    margin-left: 20px;
+  }
+  #wlogo{
+    margin-top: 15px;
+    width: 50px;
+    height: 70px;
+    margin-left: 30px;
   }
 }
 
@@ -410,13 +422,35 @@ body{
     width: 400px;
     height: 249px;
     font-size: 25px;
+    padding-left: 20px;
   }
 
-  .girl{
-    width: 314px;
-    height: 220px;
-    top: -150px;
-    left: 100px
+  .gcont h3{
+    font-size: 25px;
+  }
+
+  .row{
+    margin-top: 50px;
+  } 
+
+  .date-card{
+    padding-top: 50px;
+    font-size: 25px;
+    margin-left: 30px;
+  }
+  
+  .date-card h1{
+    font-size: 50px;
+  }
+
+  .date{
+    font-size: 25px;
+  }
+  .shroom{
+    width: 229px;
+    height: 263px;
+    top: -160px;
+    left: 130px
   }
 
   .gauge-container {
@@ -425,7 +459,7 @@ body{
   }
 
   .firstrow{
-    width: 100%; /*Makes girl logo and clock go to a new row at 1000 pixels*/
+    width: 100%; 
   }
 
   #tlogo{
@@ -436,12 +470,18 @@ body{
   }
 
   #wlogo{
-    margin-left: 25px;
+    margin-left: 55px;
   }
   /**/
-  #hlogo, #tlogo, #wlogo{
+  #hlogo, #tlogo{
     width: 130px;
     height: 130px;
+    margin-top: 30px;
+  }
+
+  #wlogo{
+    width: 80px;
+    height: 110px;
     margin-top: 30px;
   }
 
@@ -458,11 +498,33 @@ body{
   }  
 
   .date-card{
-    margin-left: 30px;
+    margin-left: 15px;
   }
-  #hlogo, #tlogo, #wlogo{
+
+  .date-card h1{
+    font-size: 40px;
+  }
+
+  .date{
+    font-size: 22px;
+  }
+
+  .shroom{
+    width: 209px;
+    height: 243px;
+    top: -160px;
+    left: 110px
+  }
+
+  #hlogo, #tlogo{
     width: 100px;
     height: 100px;
+  }
+
+  #wlogo{
+    width: 73px;
+    height: 100px;
+    margin-left: 25px;
   }
 
   .wcont, .hcont, .tcont {
@@ -481,7 +543,6 @@ body{
 
   #wlogo{
     margin-top: 15px;
-    margin-left: 12px;
   }
   
   #hlogo{
@@ -497,8 +558,6 @@ body{
   }
 
 }
-
-
 
 .dcontainer {
   position: absolute;
