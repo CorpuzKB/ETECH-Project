@@ -81,7 +81,7 @@ body{
 .shroom{
   position: relative;
   top: -180px;
-  left: 140px;
+  left: 150px;
 }
 
 .firstrow{
@@ -510,10 +510,10 @@ body{
   }
 
   .shroom{
-    width: 209px;
-    height: 243px;
+    width: 189px;
+    height: 223px;
     top: -160px;
-    left: 110px
+    left: 130px
   }
 
   #hlogo, #tlogo{
@@ -571,8 +571,8 @@ body{
   width: 35px;
   height: 15px;
   border-radius: 8px;
-  background: #6610f2;
-  box-shadow: 0 0 10px 0 #ba9cea;
+  background: #1E6C38;
+  box-shadow: 0 0 10px 0 #6FE096;
 }
 
 .uno {
