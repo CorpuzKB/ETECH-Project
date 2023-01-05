@@ -1,5 +1,5 @@
 
-  var socket = io.connect('http://localhost:4000'); //connect to server
+  var socket = io(); //connect to server
 
   var gauge1 = Gauge(
     document.getElementById("gauge1"),

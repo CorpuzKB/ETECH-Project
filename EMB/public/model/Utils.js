@@ -49,12 +49,12 @@ class Utils{
     {
         let [Xr, Xc] = X.shape;
         X = await X.array();
-        let L = await chol(await array2mat(X));
+        let L = await lalolib.chol(await lalolib.array2mat(X));
         let K = [];
         for (let i = 0; i < Xc; i++){
-            let _ = await zeros(Xr);
+            let _ = await lalolib.zeros(Xr);
             _[i] = 1;
-            K.push(Array.from(await cholsolve(L, _)));
+            K.push(Array.from(await lalolib.cholsolve(L, _)));
         }
         K = tf.tensor(K);
         return K;

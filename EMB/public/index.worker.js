@@ -3,7 +3,8 @@ if ( 'function' === typeof importScripts) {
     importScripts("https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgpu/dist/tf-backend-webgpu.js");
     importScripts("https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.5.0/math.js");
     importScripts("https://d3js.org/d3.v7.min.js");
-    importScripts("http://mlweb.loria.fr/lalolib.js");
+
+    importScripts("ext/lalolib-module.min.js");
 
     importScripts("model/params.js")
     importScripts("model/Utils.js");
