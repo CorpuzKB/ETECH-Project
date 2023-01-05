@@ -35,14 +35,14 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
           },
           marker: { 
             size: 6,
-            color: 'rgb(102,0,204)'
+            color: '(25,135,84)'
   }};
       
   let CI = {
         x: X_predict.concat(X_predict.slice().reverse()), 
         y: y_LowerCI.concat(y_UpperCI.slice().reverse()),
         fill: 'toself',
-        fillcolor: "rgba(102,0,204,0.16)", 
+        fillcolor: "rgba(25,135,84,0.16)", 
         type: 'scatter',
         line: {color: "transparent"}, 
         name: "Uncertainty",
@@ -57,7 +57,7 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
             text: sensor + ' Forecast',
             font: {
               family: "Montserrat",
-              color: '#3645c8',
+              color: '#198754',
               size: 29
             },
             xref: 'paper',
@@ -72,7 +72,7 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
               font: {
                 family: "Montserrat",
                 size: 22,
-                color: '#3645c8'
+                color: '#198754'
               }
             },
           },
@@ -87,7 +87,7 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
               font: {
                 family: "Montserrat",
                 size: 22,
-                color: '#3645c8'
+                color: '#198754'
               }
             }
           },
