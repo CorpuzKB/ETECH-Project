@@ -119,7 +119,7 @@ parser.on('data', async (temp) => {
 io.on('connection', async (socket) => {
     console.log(`Someone connected. ID: ${socket.id}`);
     await Data_reader();
-    await Data_truncate(500);
+    await Data_truncate(2100);
     io.sockets.emit('Forecast', [jsonData, 'Temperature']);   
     io.sockets.emit('Forecast', [jsonData, 'Humidity']);
     
@@ -127,6 +127,7 @@ io.on('connection', async (socket) => {
 
         io.sockets.emit('temp-update', Math.floor(Math.random()*50));
         io.sockets.emit('hum-update', Math.floor(Math.random()*50));
+        io.sockets.emit('wat-update', Math.floor(Math.random()*50));
 
     }, 3000)
 
