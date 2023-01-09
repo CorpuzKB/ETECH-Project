@@ -35,7 +35,7 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
           },
           marker: { 
             size: 6,
-            color: 'rgb(102,0,204)'},
+            color: 'rgb(25,135,84)'},
         xaxis: 'x2',
         yaxis: 'y2',};
       
