@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @font-face {
   font-family: 'Montserrat';
@@ -7,6 +7,8 @@
 
 
 body{
+  background-color: #eff2ff;
+  font-family: 'Montserrat' !important;
   background-color: #F1FDF5;
   font-family: 'Montserrat';
   font-style: normal;
@@ -29,7 +31,7 @@ body{
 }
 
 .current{
-  text-decoration-line: underline;  
+  text-decoration-line: underline;
   text-decoration-thickness: 5px;
 }
 
@@ -47,7 +49,7 @@ body{
   padding-bottom: 18px;
 }
 .greetings h1{
-  font-weight: 600;
+  font-weight: 700;
   font-size: 50px;
   color: #fff;
   line-height: 73px;
@@ -78,7 +80,7 @@ body{
   color: #1E6C39;
   font-size: 50px;
   line-height: 50px;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .shroom{
@@ -118,11 +120,11 @@ body{
   margin-left: 5px;
 }
 .gauges h3{
-  font-weight: 600;
-  margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom: 0;
 }
 
-.hcont, .tcont, .wcont{
+.hcont, .tcont, .wcont, .headcont{
   display: inline-flex;
 }
 
@@ -212,8 +214,108 @@ body{
   place-self: center;
 }
 
+.headcont{
+  display: flex;
+  justify-content: space-between;
+}
 
-/* Responsiveness */
+.info{
+  position: relative;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.info:hover{
+  filter: brightness(125%);
+}
+
+
+
+/*----------------------Pop-up cards----------------------*/
+.hpopup, .tpopup, .wpopup{
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px;
+  padding: 20px;
+  padding-right: 30px;
+  background: #8371F3;
+  box-shadow: 0px 8px 30px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-top: -25px;
+  transition: visibility 0s, opacity 0.5s linear;
+  text-align: center;
+  line-height: 36px;
+}
+
+.tclose-btn:hover{
+  filter: brightness(5%);
+}
+
+
+.hpopup p, .tpopup p, .wpopup p{
+  margin-top: 20px;
+  font-weight: 500;
+  font-size: 25px;
+  color: #fff;
+  line-height: 36px;
+}
+
+.hpopup > * , .tpopup > *, .wpopup > *{
+  margin: 15px 0px;
+}
+
+.popbold{
+  font-weight: 700;
+}
+.hpopup .hclose-btn, .tpopup .tclose-btn, .wpopup .wclose-btn{
+  position: absolute;
+  font-size: 40px;
+  top: -10px;
+  right: 10px;
+  background: none;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+body.active-popup{
+  overflow: hidden;
+}
+
+body.active-popup .main{
+  filter: blur(5px);
+  background: rgba(0, 0, 0, 0.08);
+  transition:filter 0ms ease-in-out 0ms;
+}
+
+body.active-popup .popup{
+  top: 50%;
+  opacity: 1;
+  margin-top: 0px;
+  transition: top 0ms ease-in-out 0ms, 
+              opacity 300ms ease-in-out, 
+              margin-top 300ms ease-in-out;
+}
+
+.table{
+  color: #fff;
+}
+
+.table td{
+  font-weight: 500;
+}
+
+.main{
+  transition: filter 0ms ease-in-out 300ms;
+}
+/*---------------------- Responsiveness ----------------------*/
 @media only screen and (max-width: 600px) {
   .firstrow{
     width: 100%; /*Makes girl logo and clock go to a new row at 1000 pixels*/
@@ -317,7 +419,7 @@ body{
     height: 180px;
     top: -100px;
     left: 75px;
-  }  
+  }
 
   .gcont{
     margin-bottom: 35px;
@@ -364,7 +466,7 @@ body{
   .greetings h1{
     font-size: 30px;
   }
-  
+
   .greetings{
     padding-top: 0px;
   }
@@ -394,11 +496,25 @@ body{
     height: 70px;
     margin-left: 30px;
   }
+
+  .info{
+    width: 20px;
+    height: 20px;
+  }
+
+  .info{
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media only screen and (max-width: 1110px) {
   .gcont{
     width: 250px;
+  }
+
+  .gcont h3{
+    font-size: 22px
   }
 }
 
@@ -421,6 +537,9 @@ body{
 }
 
 @media only screen and (max-width: 870px) { /*go back to bigger sizing*/
+  .hpopup, .tpopup, .wpopup{
+    width: 70%;
+  }
   .gcont{
     width: 400px;
     height: 249px;
@@ -488,6 +607,10 @@ body{
     margin-top: 30px;
   }
 
+  .gcont h3{
+    font-size: 25px
+  }
+
 }
 
 
@@ -498,7 +621,7 @@ body{
     height: 150px;
     top: -100px;
     left: 70px;
-  }  
+  }
 
   .date-card{
     margin-left: 15px;
@@ -547,7 +670,7 @@ body{
   #wlogo{
     margin-top: 15px;
   }
-  
+
   #hlogo{
     margin-left: 15px;
   }
@@ -568,7 +691,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
-} 
+}
 .dash {
   margin: 0 15px;
   width: 35px;
@@ -581,7 +704,7 @@ body{
 .uno {
   margin-right: -18px;
   transform-origin: center left;
-  animation: spin 3s linear infinite;  
+  animation: spin 3s linear infinite;
 }
 
 .dos {
@@ -655,7 +778,7 @@ body{
     transform: rotate(0deg);
   }
   27% {
-    transform: rotate(0deg);  
+    transform: rotate(0deg);
   }
   40% {
     transform: rotate(180deg);
@@ -704,7 +827,7 @@ body{
   }
 }
 
-/* Responsiveness 
+/* Responsiveness
 
 @media screen and (min-width:750px){
   .gauges{

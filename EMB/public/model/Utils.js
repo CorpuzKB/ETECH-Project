@@ -49,6 +49,18 @@ class Utils{
     {
         let [Xr, Xc] = X.shape;
         X = await X.array();
+        X = Array.from(await lalolib.inv(await lalolib.array2mat(X)).val);
+        let K = [];
+        for (let i = 0; i < Xr; i++){
+            K.push(X.slice(i*Xr, i*Xr + Xc));
+        }
+        return tf.tensor(K);
+    }
+
+    async Inverse_Cholesky(X)
+    {
+        let [Xr, Xc] = X.shape;
+        X = await X.array();
         let L = await lalolib.chol(await lalolib.array2mat(X));
         let K = [];
         for (let i = 0; i < Xc; i++){
@@ -58,14 +70,5 @@ class Utils{
         }
         K = tf.tensor(K);
         return K;
-    }
-
-    async Inverse_Direct(X)
-    {
-        let [Xr, Xc] = X.shape;
-        X = await X.array();
-        let M = await math.inv(X);
-        M = tf.squeeze(tf.tensor(M));
-        return M;
     }
 }

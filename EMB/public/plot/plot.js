@@ -1,6 +1,6 @@
 async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, sensor, date_0="2022-12-18 16:30"){
   let label = (sensor == 'Temperature')? '°C': '%';
-  const points = -6;
+  const points = -4;
   X = X.slice(points);
   y = y.slice(points);
   X = feature_to_date(X, date_0);
@@ -11,14 +11,14 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
         hovertemplate: '%{y:.2f}' + label + '<extra></extra>',
         mode: 'lines+markers',
         type: 'scatter',
-        name: "Reading",
+        name: "Observations",
         line: {
           color: "rgb(0,0,0)",
           shape: 'spline',
           size: 3,  
         },
         marker: { 
-          size: 9,
+          size: 10,
           color: 'rgb(219, 64, 82)'
   }};
   let plot_predict = {
@@ -34,9 +34,10 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
             size: 3,  
           },
           marker: { 
-            size: 9,
-            color: 'rgb(25,135,84)'
-  }};
+            size: 6,
+            color: 'rgb(102,0,204)'},
+        xaxis: 'x2',
+        yaxis: 'y2',};
       
   let CI = {
         x: X_predict.concat(X_predict.slice().reverse()), 
@@ -46,10 +47,15 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
         type: 'scatter',
         line: {color: "transparent"}, 
         name: "Uncertainty",
+        xaxis: 'x2',
+        yaxis: 'y2',
   };
-  let data = [CI, plot_train, plot_predict];
+  let data = [plot_train, plot_predict, CI];
   let config = {responsive: true}
   let layout = {
+    grid: {rows: 1, columns: 2},
+    yaxis2: {anchor: 'x2'},
+    xaxis2: {domain: [0.26, 1]},
     font: {
       family: "Montserrat",
     },
@@ -64,11 +70,11 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
             x: 0.05,
         },
         xaxis: {
+          domain: [0, 0.2],
           font: {
             family: "Montserrat",
           },
             title: {
-              text: 'Date',
               font: {
                 family: "Montserrat",
                 size: 22,

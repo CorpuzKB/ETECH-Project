@@ -10,12 +10,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bevacqua/dragula@3.7.3/dist/dragula.min.css">
   <script src="https://unpkg.com/scrollreveal"></script>
   <script defer src="active.js"></script>
-  <script defer src="time.js"></script>
   <script defer src="drag.js"></script>
+  <script defer src="popup.js"></script>
   <script src='https://cdn.jsdelivr.net/gh/bevacqua/dragula@3.7.3/dist/dragula.min.js'></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
   </head>
 </head>
 <body onload="init()">
+  <div class="main">
+  <!-------------------NavBar--------------------->
   <div class="container">
     <nav class="navbar navbar-expand-sm navbar-light">
         <button 
@@ -42,8 +45,8 @@
     </nav>
   </div>
 
-<div class="container">
-
+<div class="container"> 
+<!-------------------Greeting card + time--------------------->
   <div class="container">
     <div class="row gx-5">
       <div class="col-md-8 greetcol">
@@ -63,10 +66,14 @@
     </div>
   </div>
 
+<!-------------------Gauges--------------------->
 <div class="container">
   <div class="row gx-5 gauges gaugerow" id="dragparent">
         <div class="humidity gcont col-auto dragthing">
-          <h3>Humidity</h3>
+          <div class="headcont">
+            <h3>Humidity</h3>
+            <img src="logos/info button.png" alt="info" width="28" height="28" id="hinfo" class="info hopen-popup">
+          </div>
             <div hcont>
               <div id="gauge1" class="gauge-container"></div>
               <img src="logos/humid.png" alt="humidity logo" width="120" height="120" id="hlogo">
@@ -74,7 +81,10 @@
         </div>
 
         <div class="temperature gcont col-auto dragthing">
-          <h3>Temperature</h3>
+          <div class="headcont">
+            <h3>Temperature</h3>
+            <img src="logos/info button.png" onclick="togglePopup()" alt="info" width="28" height="28" id="tinfo" class="info topen-popup">
+          </div>
             <div tcont>
               <div id="gauge2" class="gauge-container"></div>
               <img src="logos/temp.png" alt="temperature logo" width="120" height="120"  id="tlogo">
@@ -82,7 +92,10 @@
         </div>
 
         <div class="water gcont col-auto dragthing">
-          <h3>Water</h3>
+          <div class="headcont">
+            <h3>Water</h3>
+            <img src="logos/info button.png" onclick="togglePopup()" alt="info" width="28" height="28" id="winfo" class="info wopen-popup">
+          </div>
             <div wcont>
               <div id="gauge3" class="gauge-container"></div>
               <img src="logos/water.png" alt="water logo" width="80" height="110"  id="wlogo">
@@ -93,20 +106,97 @@
 </div>
 
 
-
-
-<div class="container graphs">
-    <div class="graph" style="padding-right: 30px"> 
+<!-------------------Graphs--------------------->
+<div class="container graphs" >
+    <div class="graph" style="background-color: white; padding-right: 30px"> 
       <div id="chart-Temperature" class="container" ></div>
     </div>
 
-    <div class="graph" style="padding-right: 30px">
+    <div class="graph" style="background-color: white; padding-right: 30px">
       <div id="chart-Humidity" class="container"></div>
     </div>
 </div>
 
 </div>
+</div>
 
+<!-------------------Pop-up Cards--------------------->
+<div class="hpopup">
+  <button class="hclose-btn">&times;</button>
+  <p><span class="popbold">💡Humidity:</span> Keeping the humidity at a comfortable level can help to prevent a room from feeling stuffy or dry, which can be uncomfortable.</p>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Room Type</th>
+        <th scope="col">Recommended Range (%)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Living Room</th>
+        <td>60-70</td>
+      </tr>
+      <tr>
+        <th scope="row">Bedroom</th>
+        <td>60-70</td>
+      </tr>
+      <tr>
+        <th scope="row">Bathroom</th>
+        <td>60-70</td>
+      </tr>
+      <tr>
+        <th scope="row">Kitchen</th>
+        <td>60-70</td>
+      </tr>
+      <tr>
+        <th scope="row">Basement</th>
+        <td>60-70</td>
+      </tr>
+    </tbody>
+  </table>
+  
+</div>
+
+<div class="tpopup">
+  <button class="tclose-btn">X</button>
+  <p><span class="popbold">💡Temperature:</span> Maintaining a comfortable temperature can help to prevent a room from feeling too hot or too cold, making it cozier and more preferable to stay at.</p>
+  <table class="table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Room Type</th>
+        <th scope="col">Recommended Range (°C)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Living Room</th>
+        <td>24-26</td>
+      </tr>
+      <tr>
+        <th scope="row">Bedroom</th>
+        <td>24-26</td>
+      </tr>
+      <tr>
+        <th scope="row">Bathroom</th>
+        <td>24-26</td>
+      </tr>
+      <tr>
+        <th scope="row">Kitchen</th>
+        <td>24-26</td>
+      </tr>
+      <tr>
+        <th scope="row">Basement</th>
+        <td>24-26</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="wpopup">
+  <button class="wclose-btn">&times;</button>
+  <p><span class="popbold">💡Water:</span> Detecting leaks or the presence of water in areas where it is not supposed to be can help to prevent water damage away from unwanted areas and maintain a safe and comfortable living environment.</p>
+</div>
+<!-------------------Loading Animation--------------------->
 <nav class="navbar fixed-bottom navbar" id="banner_loading">
   <div class="dcontainer">
     <div class="dash uno"></div>
@@ -154,6 +244,5 @@
     ScrollReveal().reveal('.graphs', {delay: 250, origin: 'right'});
   </script>
   <script src="" async defer></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 </html>

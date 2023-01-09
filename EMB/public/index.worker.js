@@ -26,21 +26,31 @@ this.onmessage = function(e) {
 async function forecast(data, sensor){
     let forward = 24*60;
     let start = data.X.feature[data.X.feature.length - 1] + 1;
+    let date_T = data.X.date[data.X.date.length - 1];
+    let date_N = new Date();
+    date_N = date_N.getFullYear() + "-" + Number(date_N.getMonth() + 1) + "-" + date_N.getDate() + " "
+        + date_N.getHours() + ":" + date_N.getMinutes();
+    let offset = Math.floor((Math.abs(new Date(date_N) - new Date(date_T))/1000)/60);
     let X = await tf.tensor(data.X.feature).reshape([-1,1]);
     let y = await tf.tensor(data.y).reshape([-1,1])
-    let X_predict = await tf.range(start, start + forward, 30).reshape([-1,1]);
+    let X_predict = await tf.range(start + offset, start + forward + offset, 30).reshape([-1,1]);
     obj = new GaussianProcessRegression(params[sensor]);
     [y_mean, y_cov] = await obj.Condition(X_predict, X, y);
     y_cov = await y_cov.array();
     y_cov = y_cov.map(x => x.map( x => x || 0));
     y_cov = tf.tensor(y_cov);
     y_std = tf.sqrt(obj.getDiag(y_cov, y_cov.shape[0]));
+    y_std = tf.mul(y_std, 2);
+    if (sensor == 'Humidity'){
+        y_mean = y_mean.minimum(tf.scalar(100)).maximum(tf.scalar(0));
+        y_std = y_std.minimum(tf.abs(y_mean.sub(100)));
+    }
     self.postMessage( {
         X_predict: await X_predict.squeeze().array(),
         X: await X.squeeze().array(),
         y: await y.squeeze().array(),
-        y_UpperCI: await tf.squeeze(y_mean.add(tf.mul(y_std, 2))).array(),
-        y_LowerCI: await  tf.squeeze(y_mean.sub(tf.mul(y_std, 2))).array(),
+        y_UpperCI: await tf.squeeze(y_mean.add(y_std)).array(),
+        y_LowerCI: await  tf.squeeze(y_mean.sub(y_std)).array(),
         y_mean: await y_mean.squeeze().array(),
         y_cov: await y_cov.squeeze().array(),
         sensor: sensor,
@@ -87,5 +97,3 @@ async function SampleForecast(LINK, sensor){
         date_0: date_0
     });
 };
-
-
