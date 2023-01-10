@@ -50,7 +50,7 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
         xaxis: 'x2',
         yaxis: 'y2',
   };
-  let data = [plot_train, plot_predict, CI];
+  let data = [plot_train, CI, plot_predict];
   let config = {responsive: true}
   let layout = {
     grid: {rows: 1, columns: 2},
