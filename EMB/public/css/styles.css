@@ -63,7 +63,9 @@ body{
   margin: 0px;
 }
 
-
+.carousel-inner{
+  overflow: visible;
+}
 .greetings p{
   font-weight: 400;
   font-size: 25px;
