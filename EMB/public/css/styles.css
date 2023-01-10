@@ -63,6 +63,7 @@ body{
   margin: 0px;
 }
 
+
 .greetings p{
   font-weight: 400;
   font-size: 25px;
@@ -71,9 +72,6 @@ body{
   margin-bottom: 0px;
 }
 
-.greetings:hover{
-  transform: translateY(-5px);
-}
 .gcont:hover{
   transform: translateY(-10px);
 }
