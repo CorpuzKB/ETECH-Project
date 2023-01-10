@@ -6,6 +6,8 @@ class GaussianProcessRegression extends Utils{
 
     async Condition(N, X, y)
     {
+        var startTime = performance.now()
+
         let K_XX = new Kernels(this.params, X, X).Matrix();
         let K_XN = new Kernels(this.params, X, N).Matrix();
         let K_NN = new Kernels(this.params, N, N).Matrix();
@@ -15,6 +17,9 @@ class GaussianProcessRegression extends Utils{
         let u_N = tf.ones([N.shape[0], 1]).mul(mean);
         let u_X = tf.ones([X.shape[0], 1]).mul(mean);
         I.dispose(); K_XX.dispose();
+
+        var endTime = performance.now()
+        console.log(`Call to doSomething took ${(endTime - startTime)/1000} seconds`)
         return [tf.add(K.matMul(y.sub(u_X)), u_N), K_NN.sub(K.matMul(K_XN))];
     }   
 }

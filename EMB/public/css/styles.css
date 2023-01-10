@@ -42,11 +42,18 @@ body{
   box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
   padding-left: 26px;
-  padding-top: 18px;
+  padding-right: 26px;
+  padding-top: 15px;
   margin-top: 51px;
   transition: all 0.3s ease 0s;
   animation: pop 0.3s linear 1;
   padding-bottom: 18px;
+  text-align: center;
+  height: 200px;
+}
+
+.carousel-inner{
+  border-radius: 10px
 }
 .greetings h1{
   font-weight: 700;
@@ -64,11 +71,17 @@ body{
   margin-bottom: 0px;
 }
 
-.greetings:hover, .gcont:hover{
+.greetings:hover{
+  transform: translateY(-5px);
+}
+.gcont:hover{
   transform: translateY(-10px);
 }
 
 
+.carousel-indicators{
+  margin: 0;
+}
 /*------------Date-------------*/
 .date-card{
   padding-top: 50px;
@@ -252,9 +265,6 @@ body{
   line-height: 36px;
 }
 
-.tclose-btn:hover{
-  filter: brightness(5%);
-}
 
 
 .hpopup p, .tpopup p, .wpopup p{
@@ -393,6 +403,10 @@ body.active-popup .popup{
     top: -160px;
     left: 150px;
   }  
+
+  .carousel-item{
+    height: 220px;
+  }
 }
 
 
@@ -474,6 +488,10 @@ body.active-popup .popup{
   .greetings p{
     font-size: 20px;
   }
+
+  .carousel-item{
+    height: 200px;
+  }
   .gcont{
     width: 270px;
     height: 160px;
@@ -519,6 +537,9 @@ body.active-popup .popup{
 }
 
 @media only screen and (max-width: 1050px) {
+  .carousel-item{
+    height: 230px;
+  }
     .gcont{
       width: 220px;
     }
@@ -537,6 +558,9 @@ body.active-popup .popup{
 }
 
 @media only screen and (max-width: 870px) { /*go back to bigger sizing*/
+  .carousel-item{
+    height: 200px;
+  }
   .hpopup, .tpopup, .wpopup{
     width: 70%;
   }
@@ -615,6 +639,8 @@ body.active-popup .popup{
 
 
 @media only screen and (max-width: 498px) {
+
+ 
 
   .girl{
     width: 200px;
