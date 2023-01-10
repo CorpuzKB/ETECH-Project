@@ -38,7 +38,6 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
             color: 'rgb(25,135,84)'},
         xaxis: 'x2',
         yaxis: 'y2',};
-      
   let CI = {
         x: X_predict.concat(X_predict.slice().reverse()), 
         y: y_LowerCI.concat(y_UpperCI.slice().reverse()),
@@ -50,7 +49,7 @@ async function plot_Predictions(X_predict, X, y, y_UpperCI, y_LowerCI, y_mean, s
         xaxis: 'x2',
         yaxis: 'y2',
   };
-  let data = [plot_train, plot_predict, CI];
+  let data = [plot_train, CI, plot_predict];
   let config = {responsive: true}
   let layout = {
     grid: {rows: 1, columns: 2},
@@ -115,4 +114,3 @@ function feature_to_date(feature, date_0){
   }
   return date
 }
-

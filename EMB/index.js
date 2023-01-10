@@ -1,21 +1,17 @@
-//globals
 require('dotenv').config()
 let jsonData;
 
-//requirements
 const express = require('express');
 const fs = require('fs').promises;
 const Data = require('./Data');
 const app = express();
 let minify = require('express-minify');
-
-//use minify for express app
 app.use(minify());
 
-//listen to port
 let server = app.listen(process.env.PORT, () => { //Start the server, listening on port 4000.
     console.log("Listening to requests on port ", process.env.PORT);
 })
+
 let io = require('socket.io')(server, {
     cors: {
         origin: "http://localhost:4000",
@@ -26,10 +22,7 @@ let io = require('socket.io')(server, {
     allowEIO3: true
 }); 
 
-//Send index.html page on GET /
-
 app.use(express.static('public')); 
-
 
 /*
 //connect serial communication to arduino
@@ -45,16 +38,12 @@ const parser = port.pipe(new ReadlineParser({
 }))
 
 //Event listener for Arduino
-
-
 parser.on('data', async (temp) => {
 
     await Data_reader();
     if(jsonData.Temperature.X.date.length > 2000) {
         Data_shift();
     }
-
-
     let obj = JSON.parse(temp);
     let passTemp = obj["Temperature"];
     let passHum = obj["Humidity"];
@@ -74,11 +63,9 @@ parser.on('data', async (temp) => {
         
     let min = today.getMinutes();
     let cond = min % 10;
-
     io.sockets.emit('temp-update', passTemp);
     io.sockets.emit('hum-update', passHum);
     console.log(`Seconds: ${seconds} JSON Length: ${jsonData.Temperature.X.date.length} Modulo: ${cond}`);
-
 
     if(seconds === 30 && (cond === 0)) {
         
@@ -95,7 +82,6 @@ parser.on('data', async (temp) => {
         else {
             jsonData.Temperature.X.feature.push(0);
         }
-
         if(jsonData.Humidity.X.date?.[1]){
             let date_0 =  jsonData.Humidity.X.date[0];
             let date_T = dt;
@@ -104,7 +90,6 @@ parser.on('data', async (temp) => {
         else {
             jsonData.Humidity.X.feature.push(0);
         }
-
         console.log(jsonData);
         io.sockets.emit('Forecast', [jsonData, 'Temperature']);   
         io.sockets.emit('Forecast', [jsonData, 'Humidity']);
@@ -113,21 +98,16 @@ parser.on('data', async (temp) => {
 });
 */
 
-
 io.on('connection', async (socket) => {
     console.log(`Someone connected. ID: ${socket.id}`);
     await Data_reader();
     io.sockets.emit('Forecast', [jsonData, 'Temperature']);   
     io.sockets.emit('Forecast', [jsonData, 'Humidity']);
-    
     setInterval(() => {
-
         io.sockets.emit('temp-update', Math.floor(Math.random()*50));
         io.sockets.emit('hum-update', Math.floor(Math.random()*50));
         io.sockets.emit('wat-update', Math.floor(Math.random()*50));
-
     }, 3000)
-
     socket.on('disconnect', () => {
          console.log(`Someone disconnected. ID: ${socket.id}`);
     })
@@ -152,8 +132,7 @@ async function Data_shift(){
         jsonData[sensor].X.feature = await jsonData[sensor].X.feature.map(x => x - init);
     }
     await fs.writeFile('./data.json', JSON.stringify(jsonData, null,2));
-
-    console.log("shifted");
+    console.log("Shifted");
 }
 
 async function Data_reader(){
@@ -164,7 +143,6 @@ async function Data_reader(){
     catch(error) {
         console.log(error);
     }
-    
 }
 
 async function Data_writer(obj){
@@ -177,8 +155,6 @@ async function Data_writer(obj){
 
 
 //ACCUMULATION HERE
-
-
   /*        
 async function myLoop(delay) {         
   setTimeout(() => {   
@@ -216,4 +192,3 @@ function preProcess (data, sensor){
     }
 }
 */
-
