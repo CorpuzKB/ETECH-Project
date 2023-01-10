@@ -540,8 +540,30 @@ body.active-popup .popup{
   .carousel-item{
     height: 230px;
   }
+
+  .carousel{
+    margin-bottom: 30px;
+  }
+
+  #hlogo, #tlogo{
+    margin-top: 20px;
+  }
+  
+  #wlogo{
+    margin-top: 18px;
+  }
+  #hlogo, #tlogo{
+    width: 60px;
+    height: 60px;
+  }
+
+  #wlogo{
+    width: 43px;
+    height: 60px;
+  }
+
     .gcont{
-      width: 220px;
+      width: 200px;
     }
     .gauge-container{
       width: 90px;
@@ -559,7 +581,8 @@ body.active-popup .popup{
 
 @media only screen and (max-width: 870px) { /*go back to bigger sizing*/
   .carousel-item{
-    height: 200px;
+    height: 220px;
+
   }
   .hpopup, .tpopup, .wpopup{
     width: 70%;
@@ -638,7 +661,7 @@ body.active-popup .popup{
 }
 
 
-@media only screen and (max-width: 498px) {
+@media only screen and (max-width: 600px) {
 
  
 
@@ -669,19 +692,19 @@ body.active-popup .popup{
   }
 
   #hlogo, #tlogo{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
   }
 
   #wlogo{
-    width: 73px;
-    height: 100px;
+    width: 63px;
+    height: 90px;
     margin-left: 25px;
   }
 
   .wcont, .hcont, .tcont {
-    width: 130px;
-    height: 130px;
+    width: 100px;
+    height: 100px;
   }
 
   .gauge-container{
