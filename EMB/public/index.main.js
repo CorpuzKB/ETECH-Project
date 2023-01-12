@@ -1,6 +1,5 @@
 let l = 2;
 socket.on('Forecast', async function(data) {
-    //gauge2.setValueAnimated(data.y[data.y.length - 1], 1);
     if (data[0][data[1]].X.date?.[1]){
         const worker = new Worker('index.worker.js');
         worker.addEventListener("message", (event) => {
@@ -16,6 +15,8 @@ socket.on('Forecast', async function(data) {
     }
 })
 
+
+
 socket.on('temp-update', async (data) => {
     gauge2.setValueAnimated(data,1);
 })
@@ -24,8 +25,21 @@ socket.on('hum-update', async (data) => {
     gauge1.setValueAnimated(data,1);
 })
 
+var alerted = false;
+var time_t;
 socket.on('wat-update', async (data) => {
     gauge3.setValueAnimated(data,1);
+    
+    if(data>400 && !alerted) {
+        alert("WARNING! Water level above threshold.");
+        alerted = true;
+        
+    }
+
+    setInterval(() => {
+        alerted = false;
+    }, 10000)
+
 })
 
 

@@ -24,13 +24,13 @@ let io = require('socket.io')(server, {
 
 app.use(express.static('public')); 
 
-/*
+
 //connect serial communication to arduino
 const { SerialPort } = require('serialport'); 
 const { ReadlineParser } = require('@serialport/parser-readline');
 const { json } = require('express');
 const port = new SerialPort({
-    path: 'COM3',
+    path: 'COM5',
     baudRate: 9600
 });
 const parser = port.pipe(new ReadlineParser({
@@ -47,6 +47,7 @@ parser.on('data', async (temp) => {
     let obj = JSON.parse(temp);
     let passTemp = obj["Temperature"];
     let passHum = obj["Humidity"];
+    let passWat = obj["Water"];
 
     console.log(obj);
     
@@ -65,9 +66,10 @@ parser.on('data', async (temp) => {
     let cond = min % 10;
     io.sockets.emit('temp-update', passTemp);
     io.sockets.emit('hum-update', passHum);
+    io.sockets.emit('wat-update', passWat);
     console.log(`Seconds: ${seconds} JSON Length: ${jsonData.Temperature.X.date.length} Modulo: ${cond}`);
 
-    if(seconds === 30 && (cond === 0)) {
+    if(seconds === 30 && min === 0) {
         
         jsonData.Temperature.X.date.push(dt);
         jsonData.Temperature.y.push(passTemp);
@@ -96,18 +98,13 @@ parser.on('data', async (temp) => {
         Data_writer(jsonData);
     }
 });
-*/
+
 
 io.on('connection', async (socket) => {
     console.log(`Someone connected. ID: ${socket.id}`);
     await Data_reader();
     io.sockets.emit('Forecast', [jsonData, 'Temperature']);   
     io.sockets.emit('Forecast', [jsonData, 'Humidity']);
-    setInterval(() => {
-        io.sockets.emit('temp-update', Math.floor(Math.random()*50));
-        io.sockets.emit('hum-update', Math.floor(Math.random()*50));
-        io.sockets.emit('wat-update', Math.floor(Math.random()*50));
-    }, 3000)
     socket.on('disconnect', () => {
          console.log(`Someone disconnected. ID: ${socket.id}`);
     })

@@ -19,7 +19,7 @@ this.onmessage = function(e) {
 };
 
 async function forecast(data, sensor){
-    let forward = 24*60;
+    let forward = 36*60;
     let start = data.X.feature[data.X.feature.length - 1] + 1;
     let date_T = data.X.date[data.X.date.length - 1];
     let date_N = new Date();
